@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="true">
     <meta name="MobileOptimized" content="width">
@@ -10,15 +11,19 @@
     <title>ChurrasEmo 2° Edição - Aniversário do Kelvym</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rock+Salt&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* Reset otimizado para mobile */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
+            -webkit-text-size-adjust: none;
+            text-size-adjust: none;
         }
 
         html {
-            -webkit-text-size-adjust: 100%;
+            width: 100%;
+            overflow-x: hidden;
         }
 
         body {
@@ -28,13 +33,16 @@
             background-size: cover;
             position: relative;
             min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            line-height: 1.4;
         }
 
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -44,51 +52,57 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 100%;
+            width: 100%;
             margin: 0 auto;
-            padding: 15px;
+            padding: 10px;
             position: relative;
             z-index: 1;
         }
 
         header {
             text-align: center;
-            padding: 20px 0;
-            border-bottom: 3px solid #ff0000;
-            margin-bottom: 20px;
+            padding: 15px 5px;
+            border-bottom: 2px solid #ff0000;
+            margin-bottom: 15px;
+            width: 100%;
         }
 
         h1 {
             font-family: 'Rock Salt', cursive;
-            font-size: clamp(1.8rem, 6vw, 3rem);
+            font-size: 1.8rem;
             color: #ff0000;
             text-shadow: 2px 2px 4px #000;
-            margin-bottom: 8px;
-            word-wrap: break-word;
+            margin-bottom: 5px;
+            word-break: break-word;
+            line-height: 1.2;
         }
 
         h2 {
             font-family: 'Bebas Neue', cursive;
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-size: 1.5rem;
             color: white;
             text-shadow: 2px 2px 4px #000;
             margin-bottom: 5px;
+            line-height: 1.2;
         }
 
         h3 {
             font-family: 'Bebas Neue', cursive;
-            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            font-size: 1.3rem;
             color: #ff0000;
-            margin: 15px 0 8px;
+            margin: 12px 0 5px;
             text-shadow: 1px 1px 2px #000;
+            line-height: 1.2;
         }
 
         .section {
             background-color: rgba(0, 0, 0, 0.7);
             border: 1px solid #333;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
+            border-radius: 5px;
+            padding: 12px;
+            margin-bottom: 15px;
+            width: 100%;
         }
 
         ul {
@@ -99,70 +113,66 @@
         li {
             margin-bottom: 8px;
             position: relative;
-            padding-left: 22px;
-            font-size: clamp(0.9rem, 3vw, 1rem);
+            padding-left: 20px;
+            font-size: 0.95rem;
         }
 
         li:before {
             content: '🎸';
             position: absolute;
             left: 0;
-            font-size: 0.9em;
+            font-size: 0.8em;
         }
 
         .beer-info {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 15px 0;
+            margin: 12px 0;
             background-color: rgba(255, 255, 255, 0.1);
-            padding: 12px;
-            border-radius: 6px;
-            gap: 12px;
-        }
-
-        @media (min-width: 768px) {
-            .beer-info {
-                flex-direction: row;
-            }
+            padding: 10px;
+            border-radius: 5px;
+            gap: 10px;
+            width: 100%;
         }
 
         .beer-info img {
             width: 100%;
-            max-width: 150px;
-            border-radius: 5px;
+            max-width: 120px;
+            border-radius: 4px;
+        }
+
+        .beer-info div {
+            width: 100%;
         }
 
         .whatsapp-btn {
-            display: inline-block;
+            display: block;
             background-color: #25D366;
             color: white;
             text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 50px;
+            padding: 10px 15px;
+            border-radius: 25px;
             font-weight: bold;
-            margin-top: 12px;
+            margin: 10px auto;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            font-size: clamp(1rem, 4vw, 1.2rem);
+            font-size: 1rem;
             width: 100%;
+            max-width: 280px;
             text-align: center;
         }
 
-        .whatsapp-btn:hover {
-            background-color: #128C7E;
-            transform: scale(1.05);
-        }
-
         .map-container {
-            margin-top: 20px;
+            margin-top: 15px;
             height: 50vh;
-            min-height: 250px;
-            max-height: 400px;
-            border-radius: 8px;
+            min-height: 200px;
+            max-height: 300px;
+            border-radius: 5px;
             overflow: hidden;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            width: 100%;
         }
 
         .map-container iframe {
@@ -173,65 +183,62 @@
 
         .band-list {
             columns: 1;
-            column-gap: 20px;
-            font-size: clamp(0.9rem, 3vw, 1rem);
-        }
-
-        @media (min-width: 600px) {
-            .band-list {
-                columns: 2;
-            }
+            column-gap: 15px;
+            font-size: 0.9rem;
         }
 
         .churrasco-img {
             width: 100%;
-            max-height: 250px;
+            max-height: 200px;
             object-fit: cover;
-            border-radius: 6px;
-            margin: 12px 0;
-            box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+            border-radius: 5px;
+            margin: 10px 0;
+            box-shadow: 0 0 6px rgba(255, 0, 0, 0.5);
         }
 
         footer {
             text-align: center;
-            padding: 15px;
-            margin-top: 30px;
+            padding: 12px 5px;
+            margin-top: 20px;
             border-top: 1px solid #ff0000;
-            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-size: 0.95rem;
+            width: 100%;
         }
 
-        /* Estilos do formulário */
+        /* Formulário otimizado para mobile */
         .rsvp-form {
-            margin-top: 15px;
+            margin-top: 12px;
             background: rgba(0, 0, 0, 0.6);
-            padding: 12px;
-            border-radius: 6px;
+            padding: 10px;
+            border-radius: 5px;
             border: 1px solid #333;
+            width: 100%;
         }
 
         .form-group {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            width: 100%;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             font-weight: bold;
-            font-size: clamp(0.9rem, 3vw, 1rem);
+            font-size: 0.9rem;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 10px;
-            border-radius: 4px;
+            padding: 8px;
+            border-radius: 3px;
             border: none;
             background: rgba(255, 255, 255, 0.9);
-            font-size: clamp(0.9rem, 3vw, 1rem);
+            font-size: 0.9rem;
         }
 
         .form-group textarea {
-            min-height: 70px;
+            min-height: 60px;
             resize: vertical;
         }
 
@@ -239,21 +246,19 @@
             background: #ff0000;
             color: white;
             border: none;
-            padding: 12px;
-            border-radius: 4px;
+            padding: 10px;
+            border-radius: 3px;
             font-weight: bold;
             width: 100%;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: clamp(1rem, 3vw, 1.1rem);
-        }
-
-        .submit-btn:hover {
-            background: #cc0000;
+            font-size: 1rem;
+            margin-top: 5px;
         }
 
         .flashing {
             animation: flash 2s infinite;
+            font-size: 0.9rem;
         }
 
         @keyframes flash {
@@ -263,26 +268,46 @@
         }
 
         .emoji {
-            font-size: 1.2rem;
+            font-size: 1rem;
             vertical-align: middle;
         }
 
-        /* Melhorias para dispositivos muito pequenos */
-        @media (max-width: 360px) {
+        /* Media Queries específicas para dispositivos pequenos */
+        @media only screen and (max-width: 320px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            h2 {
+                font-size: 1.3rem;
+            }
             .container {
+                padding: 8px;
+            }
+            .section {
                 padding: 10px;
             }
-            
-            .section {
-                padding: 12px;
+        }
+
+        @media only screen and (min-width: 600px) {
+            .container {
+                max-width: 600px;
+                padding: 15px;
             }
-            
-            h1 {
-                font-size: 1.6rem;
+            .band-list {
+                columns: 2;
             }
-            
-            .whatsapp-btn {
-                padding: 10px 15px;
+            .beer-info {
+                flex-direction: row;
+            }
+        }
+
+        /* Correção específica para Safari iOS */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                height: -webkit-fill-available;
+            }
+            .container {
+                min-height: -webkit-fill-available;
             }
         }
     </style>
@@ -395,7 +420,7 @@
                 }, 100);
             });
             
-            // Máscara para telefone
+            // Máscara para telefone otimizada para mobile
             const phoneInput = document.getElementById('telefone');
             phoneInput.addEventListener('input', function(e) {
                 let numbers = this.value.replace(/\D/g, '');
