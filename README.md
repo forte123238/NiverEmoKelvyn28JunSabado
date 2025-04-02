@@ -396,6 +396,9 @@
 
         <footer>
             <p class="flashing">💀 TOQUE FINAL: 23:00hrs (12h de festinha)</p>
+            <br>
+            <br>
+            <p class=''flashing"> Developed for https://www.instagram.com/enceladus_market/ por ANDY<p>
         </footer>
     </div>
 
