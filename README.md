@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="true">
     <meta name="MobileOptimized" content="width">
-    <meta name="theme-color" content="#128C7E">
+    <meta name="theme-color" content="#ff0000">
     <meta name="format-detection" content="telephone=no">
     <title>ChurrasEmo 2° Edição - Aniversário do Kelvym</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rock+Salt&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -14,6 +15,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
@@ -23,6 +29,8 @@
             background-size: cover;
             position: relative;
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body::before {
@@ -39,29 +47,30 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
             position: relative;
             z-index: 1;
         }
 
         header {
             text-align: center;
-            padding: 30px 0;
+            padding: 20px 0;
             border-bottom: 3px solid #ff0000;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         h1 {
             font-family: 'Rock Salt', cursive;
-            font-size: 3rem;
+            font-size: clamp(1.8rem, 6vw, 3rem);
             color: #ff0000;
             text-shadow: 2px 2px 4px #000;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            word-wrap: break-word;
         }
 
         h2 {
             font-family: 'Bebas Neue', cursive;
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             color: white;
             text-shadow: 2px 2px 4px #000;
             margin-bottom: 5px;
@@ -69,49 +78,59 @@
 
         h3 {
             font-family: 'Bebas Neue', cursive;
-            font-size: 1.8rem;
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
             color: #ff0000;
-            margin: 20px 0 10px;
+            margin: 15px 0 8px;
             text-shadow: 1px 1px 2px #000;
         }
 
         .section {
             background-color: rgba(0, 0, 0, 0.7);
             border: 1px solid #333;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
         }
 
         ul {
             list-style-type: none;
-            padding-left: 20px;
+            padding-left: 15px;
         }
 
         li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             position: relative;
-            padding-left: 25px;
+            padding-left: 22px;
+            font-size: clamp(0.9rem, 3vw, 1rem);
         }
 
         li:before {
             content: '🎸';
             position: absolute;
             left: 0;
+            font-size: 0.9em;
         }
 
         .beer-info {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            margin: 20px 0;
+            margin: 15px 0;
             background-color: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 6px;
+            gap: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .beer-info {
+                flex-direction: row;
+            }
         }
 
         .beer-info img {
-            width: 150px;
-            margin-right: 20px;
+            width: 100%;
+            max-width: 150px;
             border-radius: 5px;
         }
 
@@ -120,14 +139,16 @@
             background-color: #25D366;
             color: white;
             text-decoration: none;
-            padding: 15px 25px;
+            padding: 12px 20px;
             border-radius: 50px;
             font-weight: bold;
-            margin-top: 15px;
+            margin-top: 12px;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            width: 100%;
+            text-align: center;
         }
 
         .whatsapp-btn:hover {
@@ -136,9 +157,11 @@
         }
 
         .map-container {
-            margin-top: 30px;
-            height: 400px;
-            border-radius: 10px;
+            margin-top: 20px;
+            height: 50vh;
+            min-height: 250px;
+            max-height: 400px;
+            border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
         }
@@ -150,57 +173,66 @@
         }
 
         .band-list {
-            columns: 2;
-            column-gap: 30px;
+            columns: 1;
+            column-gap: 20px;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+
+        @media (min-width: 600px) {
+            .band-list {
+                columns: 2;
+            }
         }
 
         .churrasco-img {
             width: 100%;
-            max-height: 300px;
+            max-height: 250px;
             object-fit: cover;
-            border-radius: 8px;
-            margin: 15px 0;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            border-radius: 6px;
+            margin: 12px 0;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
         }
 
         footer {
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            padding: 15px;
+            margin-top: 30px;
             border-top: 1px solid #ff0000;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
         }
 
         /* Estilos do formulário */
         .rsvp-form {
-            margin-top: 20px;
+            margin-top: 15px;
             background: rgba(0, 0, 0, 0.6);
-            padding: 15px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 6px;
             border: 1px solid #333;
         }
 
         .form-group {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1rem);
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 10px;
-            border-radius: 5px;
+            border-radius: 4px;
             border: none;
             background: rgba(255, 255, 255, 0.9);
+            font-size: clamp(0.9rem, 3vw, 1rem);
         }
 
         .form-group textarea {
-            min-height: 80px;
+            min-height: 70px;
             resize: vertical;
         }
 
@@ -209,61 +241,16 @@
             color: white;
             border: none;
             padding: 12px;
-            border-radius: 5px;
+            border-radius: 4px;
             font-weight: bold;
             width: 100%;
             cursor: pointer;
             transition: all 0.3s;
+            font-size: clamp(1rem, 3vw, 1.1rem);
         }
 
         .submit-btn:hover {
             background: #cc0000;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-            
-            .beer-info {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .beer-info img {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-            
-            .band-list {
-                columns: 1;
-            }
-            
-            .map-container {
-                height: 300px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-            
-            .container {
-                padding: 10px;
-            }
-            
-            .section {
-                padding: 15px;
-            }
         }
 
         .flashing {
@@ -277,8 +264,27 @@
         }
 
         .emoji {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             vertical-align: middle;
+        }
+
+        /* Melhorias para dispositivos muito pequenos */
+        @media (max-width: 360px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 12px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            .whatsapp-btn {
+                padding: 10px 15px;
+            }
         }
     </style>
 </head>
@@ -391,13 +397,24 @@
             });
             
             // Máscara para telefone
-            document.getElementById('telefone').addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length > 11) value = value.substring(0, 11);
+            const phoneInput = document.getElementById('telefone');
+            phoneInput.addEventListener('input', function(e) {
+                let numbers = this.value.replace(/\D/g, '');
+                if (numbers.length > 11) numbers = numbers.substring(0, 11);
                 
                 // Formatar como (XX) XXXXX-XXXX
-                value = value.replace(/(\d{0})(\d{0})(\d{0})(\d{0})/, '($1$2) $3$4-$5');
-                e.target.value = value;
+                let formatted = '';
+                if (numbers.length > 0) {
+                    formatted = '(' + numbers.substring(0, 2);
+                }
+                if (numbers.length > 2) {
+                    formatted += ') ' + numbers.substring(2, 7);
+                }
+                if (numbers.length > 7) {
+                    formatted += '-' + numbers.substring(7, 11);
+                }
+                
+                this.value = formatted;
             });
 
             // Envio do formulário
