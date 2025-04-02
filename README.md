@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -123,9 +124,6 @@
             border: none;
             cursor: pointer;
             font-size: 1.2rem;
-            background-image: url('https://github.com/AndherCaetano/Forms-Unnichat/blob/main/Captura%20de%20Tela%202025-04-02%20a%CC%80s%2015.51.04.png');
-            background-size: cover;
-            background-position: center;
         }
 
         .whatsapp-btn:hover {
@@ -167,6 +165,55 @@
             margin-top: 40px;
             border-top: 1px solid #ff0000;
             font-size: 1.2rem;
+        }
+
+        /* Estilos do formulário */
+        .rsvp-form {
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #ff0000;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #cc0000;
         }
 
         @media (max-width: 768px) {
@@ -280,6 +327,27 @@
             <h3>📞 CONFIRMAÇÃO:</h3>
             <p>"Bateu o riff da saudade? Me avisa até 25/06!"</p>
             <a href="https://wa.me/5521981304519?text=Pode%20chamar%20o%20EMO!" class="whatsapp-btn">Pode Chamar o EMO!</a>
+            
+            <div class="rsvp-form">
+                <form id="confirmacaoForm">
+                    <div class="form-group">
+                        <label for="nome">Seu Nome:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem (opcional):</label>
+                        <textarea id="mensagem" name="mensagem" placeholder="Ex: Vou levar Stella! Ou: Não posso faltar!"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">ENVIAR CONFIRMAÇÃO</button>
+                </form>
+            </div>
         </div>
 
         <div class="section">
@@ -318,14 +386,40 @@
                 }, 100);
             });
             
-            // Efeito de rolagem suave para links internos
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
+            // Máscara para telefone
+            document.getElementById('telefone').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 11) value = value.substring(0, 11);
+                
+                // Formatar como (XX) XXXXX-XXXX
+                value = value.replace(/(\d{0})(\d{0})(\d{0})(\d{0})/, '($1$2) $3$4-$5');
+                e.target.value = value;
+            });
+
+            // Envio do formulário
+            document.getElementById('confirmacaoForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const nome = document.getElementById('nome').value;
+                const telefone = document.getElementById('telefone').value;
+                const mensagem = document.getElementById('mensagem').value;
+                
+                // Formatar a mensagem para o WhatsApp
+                let textoWhatsApp = `*Confirmacao para o ChurrasEmo!*%0A%0A`;
+                textoWhatsApp += `*Nome:* ${encodeURIComponent(nome)}%0A`;
+                textoWhatsApp += `*Telefone:* ${encodeURIComponent(telefone)}%0A`;
+                
+                if (mensagem) {
+                    textoWhatsApp += `*Mensagem:* ${encodeURIComponent(mensagem)}%0A`;
+                }
+                
+                textoWhatsApp += `%0A_Enviado pelo formulário de confirmação_`;
+                
+                // Abrir WhatsApp com os dados
+                window.open(`https://wa.me/5521981304519?text=${textoWhatsApp}`, '_blank');
+                
+                // Limpar formulário (opcional)
+                this.reset();
             });
         });
     </script>
