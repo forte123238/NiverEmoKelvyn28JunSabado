@@ -28,7 +28,7 @@
         body {
             font-family: 'Roboto', sans-serif;
             color: white;
-            background: url('https://gabriellemoreira.com.br/wp-content/uploads/2025/04/Captura-de-Tela-2025-04-02-as-15.51.04.png') no-repeat center center fixed;
+            background: url('background.png') no-repeat center center fixed;
             background-size: cover;
             position: relative;
             min-height: 100vh;
