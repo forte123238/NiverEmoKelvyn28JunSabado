@@ -323,7 +323,7 @@
             <h3>📌 O QUE ROLA:</h3>
             <ul>
                 <li><strong>CHURRASCO COMPLETO</strong> (cortesia do chef)</li>
-                <img src="churrasco.png" alt="Churrasco" class="churrasco-img">
+                <img src="churrasco.jpg" alt="Churrasco" class="churrasco-img">
                 <li><strong>KARAOKÊ TEMÁTICO</strong> (prepare suas cordas vocais!)</li>
                 <li><strong>PLAYLIST ÉPICA:</strong></li>
             </ul>
